@@ -1,5 +1,6 @@
 /* light mode */
 :root {
+    /* light mode color settings */
     --main-color: #7dffcf;
     --accent-color: #04049d;
     --main-color-alpha: rgba(128, 255, 208, 0.625);
@@ -23,7 +24,6 @@ html[data-theme='dark'] {
     --button-accent: #2b2b2b;
 
     --git-color: white;
-    /* --font-primary: 'IBM Plex Serif', serif; */
 
     --font-primary: 'IBM Plex Sans', sans-serif;
     --font-secondary: 'IBM Plex Sans', sans-serif;
@@ -53,29 +53,7 @@ canvas {
     background-repeat: no-repeat;
 }
 
-/* scrollBar settings */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent-color-alpha);
-}
-
-*::-webkit-scrollbar {
-    width: 0.55vw;
-}
-
-*::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background-color: var(--accent-color-alpha);
-}
-
 /* main css */
-
-body {
-    margin: 0;
-    padding: 0;
-    color: var(--font-primary-color);
-    font-family: var(--font-primary);
-}
 
 .loader {
     font-family: var(--font-primary);
@@ -103,6 +81,13 @@ body {
         opacity: 0;
         visibility: hidden;
     }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--font-primary-color);
+    font-family: var(--font-primary);
 }
 
 .container {
@@ -294,6 +279,7 @@ body {
     -ms-transition:  0.5s ease-out;
     -o-transition:  0.5s ease-out;
     transition:  0.5s ease-out;
+
 }
 
 /* toggle style */
@@ -312,12 +298,6 @@ body {
     display: none;
 }
 
-.toggle {
-    position: absolute;
-    top: 10vh;
-    right: 10vh;
-}
-
 .indicator {
     position: relative;
     display: block;
@@ -334,50 +314,144 @@ body {
     background: var(--accent-color);
 }
 
-.container .content {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    background: var(--main-color);
-    background: var(--background-gradient);
+
+/* for big screens */
+@media only screen and (min-width: 1025px) {
+  /* scrollBar settings */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent-color-alpha);
+    }
+
+    *::-webkit-scrollbar {
+        width: 0.55vw;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        background-color: var(--accent-color-alpha);
+    }
+
+    .container .content {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        background: var(--main-color);
+        background: var(--background-gradient);
+    }
+
+    .col.col-sidebar {
+        width: 50%;
+    }
+
+    .profile-text {
+        height: 50%;
+        width: 80%;
+    }
+
+    .profile-text h1 {
+        margin: 0 0 0 0;
+        font-size: 5vh;
+    }
+
+    .profile-text .aka {
+        margin: 0 0 11px 0;
+        font-size: 3vh;
+    }
+
+    .profile-text .know-more {
+        font-size: 2vh;
+        font-style: italic;
+        margin: 22px 0 0 0;
+    }
+
+    .profile-text h3 {
+        margin: 2px 0;
+        font-size: 3vh;
+    }
+
+    .icon {
+        width: 40%;
+        font-size: 4vh;
+        margin-top: 11px;
+    }
+
+    #down-pointer {
+        display: none;
+    }
+
+    .toggle {
+        position: absolute;
+        top: 10vh;
+        right: 10vh;
+    }
 }
 
-.col.col-sidebar {
-    width: 50%;
-}
+/* for small screens */
+@media only screen and (max-width: 1024px) {
+    .container .content {
+        width: 100vw;
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
 
-.profile-text {
-    height: 50%;
-    width: 80%;
-}
+    .col.col-sidebar {
+        width: 100vw;
+        min-height: 100vh;
+    }
 
-.profile-text h1 {
-    margin: 0 0 0 0;
-    font-size: 5vh;
-}
+    .profile-text {
+        height: 75%;
+        width: 80%;
+    }
 
-.profile-text .aka {
-    margin: 0 0 11px 0;
-    font-size: 3vh;
-}
+    .profile-text h1 {
+        margin: 0;
+        font-size: 8vh;
+        line-height: 100%;
+    }
 
-.profile-text .know-more {
-    font-size: 2vh;
-    font-style: italic;
-    margin: 22px 0 0 0;
-}
+    .profile-text .aka {
+        margin: 0 0 20px 0;
+        font-size: 4vh;
+    }
 
-.profile-text h3 {
-    margin: 2px 0;
-    font-size: 3vh;
-}
+    .profile-text .know-more {
+        font-size: 2.5vh;
+        font-style: italic;
+        margin: 20px 0 0 0;
+    }
 
-.icon {
-    width: 40%;
-    font-size: 4vh;
-    margin-top: 11px;
-}
+    .profile-text h3 {
+        margin: 0;
+        font-size: 3vh;
+    }
 
-#down-pointer {
-    display: none;
+    .icon {
+        justify-self: center;
+        width: 90%;
+        margin: 0 auto;
+        font-size: 4vh;
+        margin-top: 18px;
+    }
+
+    .col.col-content {
+        width: 100vw;
+        background-color: var(--main-color);
+    }
+
+    /* toggle style */
+
+    .label {
+        width: 100%;
+        height: 10vh;
+        padding: 8vh 0;
+        position: absolute;
+    }
+
+    .toggle {
+        display: block;
+        margin: 0 auto;
+    }
 }
