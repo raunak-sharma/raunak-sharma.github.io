@@ -1,5 +1,4 @@
 (function () {
-
     let jsonNeed = {
         "particles": {
             "number": {
@@ -119,5 +118,34 @@
     });
 
     particlesJS('particles-js', jsonNeed);
+
+    document.addEventListener('DOMContentLoaded', function () {
+        let toggle = document.querySelector('.toggle');
+        let checkbox = document.querySelector('input[name=theme]');
+        checkbox.addEventListener('change', function() {
+            if(this.checked) {
+                trans()
+                jsonNeed.particles.color.value = "#fff700";
+                jsonNeed.particles.line_linked.color = "#fff700";
+                toggle.style.backgroundColor = "#333333";
+                document.documentElement.setAttribute('data-theme', 'dark');
+                particlesJS('particles-js', jsonNeed);
+            } else {
+                trans()
+                jsonNeed.particles.color.value = "#1000c4";
+                jsonNeed.particles.line_linked.color = "#1000c4";
+                toggle.style.backgroundColor = "white";
+                document.documentElement.setAttribute('data-theme', 'light');
+                particlesJS('particles-js', jsonNeed);
+            }
+        });
+
+        let trans = () => {
+            document.documentElement.classList.add('transition');
+            window.setTimeout(() => {
+                document.documentElement.classList.remove('transition')
+            }, 1000)
+        }
+    });
 
 })();
