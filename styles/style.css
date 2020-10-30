@@ -248,7 +248,44 @@ body {
     -ms-transition:  0.5s ease-out;
     -o-transition:  0.5s ease-out;
     transition:  0.5s ease-out;
+}
 
+/* toggle style */
+
+.toggle {
+    display: block;
+    width: 40px;
+    height: 20px;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: #ffffff;
+    z-index: 55555;
+}
+
+.toggle-state {
+    display: none;
+}
+
+.toggle {
+    position: absolute;
+    top: 10vh;
+    right: 10vh;
+}
+
+.indicator {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 200%;
+    background: var(--accent-color);
+    border-radius: 15px;
+    transform: translate3d(-75%, 0, 0);
+    transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+}
+
+.toggle-state:checked ~ .indicator {
+    transform: translate3d(25%, 0, 0);
+    background: var(--accent-color);
 }
 
 .container .content {
