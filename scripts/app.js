@@ -112,6 +112,7 @@
 
     window.addEventListener("load", function () {
         setTimeout(()=> {
+            console.log('%cWhich mode %cdo you like %c?', 'color: #2acdc1', 'color: #fff700', 'color: white');
             const loader = document.querySelector(".loader");
             loader.className += " hidden";
         }, 1500);
